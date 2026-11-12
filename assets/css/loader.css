@@ -1,0 +1,23 @@
+/* Full-screen entrance loader - same animation as portfolio, teal + cyan theme */
+body.loading { overflow: hidden; }
+
+.portfolio-loader{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;overflow:hidden;font-family:'Poppins',system-ui,sans-serif;
+  background:radial-gradient(ellipse at 50% 45%,#0a7f95 0%,#005769 38%,#032b4c 100%);
+  opacity:1;visibility:visible;transition:opacity 1.2s ease,visibility 1.2s ease}
+.portfolio-loader:before,.portfolio-loader:after{position:absolute;content:"";width:min(72vw,680px);aspect-ratio:1;border:1px solid rgba(59,239,255,.16);border-radius:50%;animation:loader-orbit 12s linear infinite}
+.portfolio-loader:after{width:min(56vw,520px);animation-direction:reverse;animation-duration:9s}
+.portfolio-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.portfolio-loader__content{position:relative;z-index:1;text-align:center;padding:1.5rem}
+.portfolio-loader__eyebrow{margin:0 0 .7rem;color:#b9f5ff;font-size:.78rem;font-weight:500;letter-spacing:.42em;text-transform:uppercase;animation:loader-rise .7s .1s both}
+.portfolio-loader__title{display:flex;align-items:center;justify-content:center;gap:clamp(.5rem,2.5vw,2rem);margin:0;font:700 clamp(1.65rem,7.5vw,5.5rem)/1.1 'Poppins',system-ui,sans-serif;letter-spacing:.12em;white-space:nowrap;animation:loader-rise .8s .25s both}
+.portfolio-loader__title span{color:#fff}
+.portfolio-loader__title strong{font:inherit;background:linear-gradient(110deg,#00aabf,#3befff,#e6fdff,#00aabf);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:loader-glow 2.5s linear infinite}
+.portfolio-loader__line{display:block;width:min(260px,55vw);height:2px;margin:1.6rem auto .8rem;overflow:hidden;background:rgba(59,239,255,.2)}
+.portfolio-loader__line i{display:block;width:42%;height:100%;background:linear-gradient(90deg,transparent,#3befff,#e6fdff,transparent);animation:loader-progress 1.35s ease-in-out infinite}
+.portfolio-loader__caption{color:#d4f5fc;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;animation:loader-rise .8s .4s both}
+@keyframes loader-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes loader-progress{0%{transform:translateX(-110%)}100%{transform:translateX(250%)}}
+@keyframes loader-glow{to{background-position:220% center}}
+@keyframes loader-orbit{to{transform:rotate(360deg)}}
+@media(max-width:480px){.portfolio-loader__title{letter-spacing:.06em}.portfolio-loader__eyebrow{letter-spacing:.3em}.portfolio-loader__caption{letter-spacing:.16em}}
+@media(prefers-reduced-motion:reduce){.portfolio-loader:before,.portfolio-loader:after,.portfolio-loader__title strong,.portfolio-loader__line i{animation:none}}
